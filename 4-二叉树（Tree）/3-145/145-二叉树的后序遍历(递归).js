@@ -14,25 +14,9 @@ var postorderTraversal = function(root, result = []) {
     if (root === null) {
         return;
     }
-    
-    let stack1 = [];
-    let stack2 = [];
-    stack1.push(root);
-    
-    while (stack1.length > 0) {
-        let node = stack1.pop();
-        stack2.push(node.val);
-        if (node.left !== null) {
-            stack1.push(node.left);
-        }
-        if (node.right !== null) {
-            stack1.push(node.right);
-        }
-    }
-
-    while(stack2.length > 0) {
-        result.push(stack2.pop());
-    }
+    postorderTraversal(root.left, result);
+    postorderTraversal(root.right, result);
+    result.push(root.val);
     
     return result;
 };
