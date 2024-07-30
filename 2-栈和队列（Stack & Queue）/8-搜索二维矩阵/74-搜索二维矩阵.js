@@ -9,16 +9,16 @@ var searchMatrix = function(matrix, target) {
         return false;
     }
 
-    const row = matrix.length;
-    const column = matrix[0].length;
+    let row = matrix.length;
+    let column = matrix[0].length;
 
     let start = 0;
     let end = row * column -1;
     while (start + 1 < end) {
-        const mid = Math.floor(start + (end - start) / 2);
+        let mid = Math.floor(start + (end - start) / 2);
 
-        const x = Math.floor(mid / column);
-        const y = mid % column;
+        let x = Math.floor(mid / column);
+        let y = mid % column;
         if(target == matrix[x][y]){
             return true;
         }else if(target > matrix[x][y]){

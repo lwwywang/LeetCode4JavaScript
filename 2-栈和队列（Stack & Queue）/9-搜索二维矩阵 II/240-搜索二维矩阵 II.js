@@ -4,23 +4,24 @@
  * @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
-    if(matrix === null || matrix.length == 0 || matrix[0].length == 0 || matrix[0] === null){
+    if(matrix === null || matrix.length === 0 || matrix[0].length === 0){
         return false;
     }
-    //右上角的坐标为（0，m-1），向左递减，向下递增
-    //左下角的坐标为（n-1，0），向右递增，向上递减
-    let m = matrix[0].length - 1;
-    let n = matrix.length - 1;
+    //右上角的坐标为（0，n-1），向左递减，向下递增
+    //左下角的坐标为（m-1，0），向右递增，向上递减
+    let m = matrix[0].length;
+    let n = matrix.length;
 
+    //从右上角开始
     let x = 0;
     let y = m - 1;
 
     while(x < n && y >= 0){
-        if(matrix[x][y] == target){
+        if(target === matrix[x][y]){
             return true;
-        }else if(matrix[x][y] > target){
+        } else if (target < matrix[x][y]){
             y--;
-        }else{
+        } else {
             x++;
         }
     }
