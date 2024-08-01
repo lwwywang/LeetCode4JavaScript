@@ -19,15 +19,15 @@ var kthToLast = function(head, k) {
     let slow = head;
     let index = k - 1;
 
-    while(index-- !== 0 && fast.next !== null){
+    while(index !== 0 && fast.next !== null){
         fast = fast.next;
+        index--;
     }
 
-    while(fast !== null && fast.next !== null){
+    while(fast.next !== null){
         fast = fast.next;
         slow = slow.next;
     }
-
     return slow;
 };
 
