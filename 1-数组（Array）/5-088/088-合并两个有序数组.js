@@ -6,39 +6,45 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
+    if (nums1 === null && nums2 === null){
+        return null;
+    }
+
     let result = [];
     let index1 = 0;
     let index2 = 0;
     let index = 0;
-    while(index1 < m && index2 < n){
-           if(nums1[index1] <= nums2[index2]){
-               result[index] = nums1[index1];
-               index++;
-               index1++;
-           }
-           else{
-               result[index] = nums2[index2];
-               index++;
-               index2++;
-           }
+
+    while (index1 < m && index2 < n){
+        if(nums1[index1] < nums2[index2]){
+            result[index] = nums1[index1];
+            index++;
+            index1++;
+        } else {
+            result[index] = nums2[index2];
+            index++;
+            index2++;
+        }
     }
-   
+
     while(index1 < m){
-       result[index] = nums1[index1];
-               index++;
-               index1++;
+        result[index] = nums1[index1];
+        index++;
+        index1++;
     }
-   
+
     while(index2 < n){
-       result[index] = nums2[index2];
-               index++;
-               index2++;
+        result[index] = nums2[index2];
+        index++;
+        index2++;
     }
-   
-    for(var i=0; i<m+n; i++){
-       nums1[i] = result[i]
+
+    for(let i = 0; i < m + n; i++){
+        nums1[i] = result[i]
     }
-   };
+
+    return nums1;
+};
 
 
 const nums1 = [1,2,3,0,0,0]
